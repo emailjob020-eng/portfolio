@@ -1,5 +1,15 @@
 (function(){
  var r=document.documentElement,t=document.getElementById('tg'),app=document.getElementById('app'),nav=document.querySelector('.nav');
+ var menuToggle=nav.querySelector('.menu-toggle'),menuLinks=nav.querySelectorAll('.nav-links a');
+ function setMenuOpen(open){
+  nav.classList.toggle('menu-open',open);
+  menuToggle.setAttribute('aria-expanded',open);
+  menuToggle.setAttribute('aria-label',open?'Close navigation menu':'Open navigation menu');
+ }
+ menuToggle.addEventListener('click',function(){setMenuOpen(menuToggle.getAttribute('aria-expanded')!=='true')});
+ menuLinks.forEach(function(link){link.addEventListener('click',function(){setMenuOpen(false)})});
+ addEventListener('keydown',function(e){if(e.key==='Escape')setMenuOpen(false)});
+ addEventListener('resize',function(){if(innerWidth>760)setMenuOpen(false)});
  var rm=matchMedia('(prefers-reduced-motion:reduce)').matches,busy=false;
  function updateNav(){nav.classList.toggle('scrolled',window.scrollY>8)}
  addEventListener('scroll',updateNav,{passive:true});updateNav();
