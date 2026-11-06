@@ -92,8 +92,11 @@ h2{font-size:2.6rem;line-height:3.2rem;text-align:center;margin:0 0 3.4rem}
 @keyframes contact-glow{0%,75%{outline:3px solid #2563eb;outline-offset:3px;box-shadow:0 0 0 3px rgba(37,99,235,.45),0 0 22px 7px rgba(37,99,235,.75)}100%{outline:3px solid transparent;outline-offset:6px;box-shadow:0 0 0 3px transparent,0 0 0 0 transparent}}
 @media (prefers-reduced-motion:reduce){#contact-talk.contact-highlight{animation:none;outline:3px solid #2563eb;outline-offset:4px;box-shadow:0 0 18px 5px rgba(37,99,235,.7)}}
 .ic{display:flex;gap:.8rem}
-.ic a{width:2.9rem;height:2.9rem;border:1px solid var(--line);border-radius:.7rem;display:grid;place-items:center}
+.ic a{position:relative;width:2.9rem;height:2.9rem;border:1px solid var(--line);border-radius:.7rem;display:grid;place-items:center}
 .ic svg{width:1.4rem;height:1.4rem}
+.ic svg.icon-outline{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.icon-outline rect{fill:none;stroke:var(--brand);stroke-width:1.5;stroke-dasharray:100;stroke-dashoffset:100;transition:stroke-dashoffset .55s cubic-bezier(.22,1,.36,1)}
+.ic a:hover .icon-outline rect{stroke-dashoffset:0}
 footer{display:flex;justify-content:space-between;padding:2rem 4.2rem 3.6rem;font-size:.85rem;color:var(--mute)}
 .ov{position:fixed;inset:0;z-index:100;overflow:hidden;pointer-events:none;background:var(--bg);color:var(--ink)}
 .ovin{position:absolute;left:0;top:0}
@@ -143,4 +146,4 @@ footer{display:flex;justify-content:space-between;padding:2rem 4.2rem 3.6rem;fon
 @keyframes reveal{from{clip-path:circle(0px at var(--cx) var(--cy))}to{clip-path:circle(var(--cr) at var(--cx) var(--cy))}}
 @keyframes menu-drop{from{opacity:0;transform:translateY(-.8rem) scaleY(.96)}to{opacity:1;transform:translateY(0) scaleY(1)}}
 @keyframes menu-link-in{from{opacity:0;transform:translateY(-.5rem)}to{opacity:1;transform:translateY(0)}}
-@media (prefers-reduced-motion:reduce){.nav,.menu-toggle,.menu-toggle span,.th img,.b,.sw button{transition:none}.nav.menu-open .nav-menu,.nav-links a,.nav-actions{animation:none}}
+@media (prefers-reduced-motion:reduce){.nav,.menu-toggle,.menu-toggle span,.th img,.b,.sw button,.icon-outline rect{transition:none}.ic a:hover .icon-outline rect{stroke-dashoffset:0}.nav.menu-open .nav-menu,.nav-links a,.nav-actions{animation:none}}
